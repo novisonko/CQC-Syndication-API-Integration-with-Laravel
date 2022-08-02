@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('providers', 'App\Http\Controllers\ProviderController@index');
+
+Route::get('providers/{providerId}', 'App\Http\Controllers\ProviderController@show');

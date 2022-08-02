@@ -15,17 +15,9 @@ class ProviderController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $res= json_decode(file_get_contents('https://api.cqc.org.uk/public/v1/providers'), true)['providers'] ?? [];
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return response()->json(['success' => true, 'data' => $res]);
     }
 
     /**
@@ -45,32 +37,21 @@ class ProviderController extends Controller
      * @param  \App\Models\Provider  $provider
      * @return \Illuminate\Http\Response
      */
-    public function show(Provider $provider)
+    public function show(string $providerId)
     {
-        //
-    }
+        $res= [];
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Provider  $provider
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Provider $provider)
-    {
-        //
-    }
+        $saved= Provider::where('provider_id', '=', $providerId)->first();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateProviderRequest  $request
-     * @param  \App\Models\Provider  $provider
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateProviderRequest $request, Provider $provider)
-    {
-        //
+        if(!is_null($saved)){
+
+        } else {
+
+            $res= json_decode(file_get_contents('https://api.cqc.org.uk/public/v1/providers/' . $providerId), true);
+
+        }
+
+        return response()->json(['success' => true, 'data' => $res]);
     }
 
     /**
