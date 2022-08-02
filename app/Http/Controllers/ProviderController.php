@@ -13,7 +13,7 @@ class ProviderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(App\Models\Provider $provider)
+    public function index(\App\Models\Provider $provider)
     {
         $res= $provider->selectAll();
 
