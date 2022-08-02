@@ -43,7 +43,7 @@ return new class extends Migration
             $table->string('constituency');
             $table->string('localAuthority');
             $table->date('lastInspection');
-            $table->integer('timestamp_updated');
+            $table->integer('timestampUpdated');
         });
     }
 

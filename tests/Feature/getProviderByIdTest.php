@@ -35,10 +35,6 @@ class getProviderByIdTest extends TestCase
        
         $res = json_decode($response->content(), true);
 
-        if(!is_array($res)){
-            $res= [];
-        }
-
-        $this->assertArrayHasKey('providerId', $res);
+        $this->assertArrayHasKey('providerId', $res['data'] ?? []);
     }
 }
