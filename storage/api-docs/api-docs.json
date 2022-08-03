@@ -1,0 +1,59 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "CQC (Care Quality Commission) Providers API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/providers": {
+            "get": {
+                "tags": [
+                    "List Providers"
+                ],
+                "summary": "Get list of providers",
+                "description": "Returns list of providers",
+                "operationId": "selectAll",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
+            }
+        },
+        "/providers/{providerId}": {
+            "get": {
+                "tags": [
+                    "Select Provider By ProviderId"
+                ],
+                "summary": "Get provider information",
+                "description": "Returns provider data",
+                "operationId": "selectByProviderId",
+                "parameters": [
+                    {
+                        "name": "providerId",
+                        "in": "path",
+                        "description": "Provider id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -12,9 +12,25 @@ class Provider extends Model
     protected $fillable = ['providerId','locationIds','organisationType','ownershipType','type','name','brandId','brandName','registrationStatus','registrationDate','companiesHouseNumber','charityNumber','website','postalAddressLine1','postalAddressLine2','postalAddressTownCity','postalAddressCounty','region','postalCode','uprn','onspdLatitude','onspdLongitude','mainPhoneNumber','inspectionDirectorate','constituency','localAuthority','lastInspection','timestampUpdated']; 
 
     /**
-     * Get all records
+     * Get list of providers
      * 
      * @return array
+     */
+    /**
+     * @OA\Get(
+     *      path="/providers",
+     *      operationId="selectAll",
+     *      tags={"List Providers"},
+     *      summary="Get list of providers",
+     *      description="Returns list of providers",
+     *      @OA\Response(
+     *          response=200,
+     *          description="successful operation"
+     *       ),
+     *       @OA\Response(response=400, description="Bad request"),
+     *     )
+     *
+     * Returns list of providers
      */
     public function selectAll()
     {
@@ -27,6 +43,29 @@ class Provider extends Model
      * @param string $providerId
      * 
      * @return array
+     *
+     * @OA\Get(
+     *      path="/providers/{providerId}",
+     *      operationId="selectByProviderId",
+     *      tags={"Select Provider By ProviderId"},
+     *      summary="Get provider information",
+     *      description="Returns provider data",
+     *      @OA\Parameter(
+     *          name="providerId",
+     *          description="Provider id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="successful operation"
+     *       ),
+     *      @OA\Response(response=400, description="Bad request"),
+     *      @OA\Response(response=404, description="Resource Not Found"),
+     * )
      */
     public function selectByProviderId(string $providerId)
     {
